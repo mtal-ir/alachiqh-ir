@@ -1,1 +1,227 @@
+/* MTAL=============================================================================================
+/*                                                 استایل درخشش المان
+/* =============================================================================================CSS*/
+.mtal-logo {
+    animation: subtle-pulse 3s infinite ease-in-out;
+    transition: transform 0.3s ease;
+}
+
+@keyframes subtle-pulse {
+    0%, 100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.2));
+    }
+    50% {
+        transform: scale(1.02);
+        filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.6));
+    }
+}
+/*افکت دکمه رزرو*/
+.mtal-btn , #mtal-reserveform-btn {
+    -webkit-mask: linear-gradient(-60deg,#000 30%,rgba(0,0,0,.3333333333333333),#000 50%) right/300% 100%;
+    mask: linear-gradient(-60deg,#000 30%,rgba(0,0,0,.3333333333333333),#000 50%) right/300% 100%;
+    background-repeat: no-repeat;
+    -webkit-animation: shimmer 3s infinite;
+    animation: shimmer 3s infinite
+}
+
+@-webkit-keyframes shimmer {
+    0% {
+        -webkit-mask-position: 140% 140%;
+        mask-position: 140% 140%
+    }
+
+    to {
+        -webkit-mask-position: -20% -20%;
+        mask-position: -20% -20%
+    }
+}
+
+/* MTAL=============================================================================================
+/*                                                  مودال آرشیو سوئیتها
+/* =============================================================================================CSS*/
+/* کانتینر اصلی مودال (پس‌زمینه کل صفحه) */
+.mtal-front {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* پس‌زمینه تیره شفاف */
+    backdrop-filter: blur(5px);
+    z-index: 9999;
+    display: none; /* در حالت عادی کلاً مخفی و از رندر خارج می‌شود */
+    justify-content: flex-end; /* برای باز شدن از سمت راست (سایدبار) */
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+}
+
+/* حالت فعال شدن مودال */
+.mtal-front.active {
+    display: flex; /* موقع فعال شدن نمایش داده می‌شود */
+    visibility: visible;
+    opacity: 1;
+}
+/*انیمیشن دکمه بستن*/
+.mtal-effect{
+ animation: mtal-pulse 2s infinite ease-in-out;
+}
+
+@keyframes mtal-pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.06);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+/* MTAL=============================================================================================
+/*                            حذف فضای اضافی پایین آیکن های کتابخانه   
+/* =============================================================================================CSS*/
+.elementor-icon-wrapper {
+    display: flex;
+}
+
+/* MTAL=============================================================================================
+/*                                      تغییر فلش موس  
+/* =============================================================================================CSS*/
+.mtal-pointer , .mtal-open {
+	cursor:pointer;
+}
+
+/* MTAL=============================================================================================
+/*                                      اسکرول بارها 
+/* =============================================================================================CSS*/
+
+/* تنظیم کلی اسکرول‌بار برای کل صفحه و المان‌ها */
+::-webkit-scrollbar {
+  width: 6px;  /* عرض اسکرول‌بار عمودی */
+  height: 6px; /* ارتفاع اسکرول‌بار افقی (مناسب اسلایدرها) */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9; /* رنگ پس‌زمینه مسیر اسکرول */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1; /* رنگ خود هندل اسکرول */
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8; /* رنگ هندل هنگام هاور با موس */
+}
+
+/* پشتیبانی از مرورگر فایرفاکس */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 #f1f5f9;
+}
+
+/*اسکرول و حداکثر ارتفاع محتوی*/
+.mtal-scrool{
+overflow-y:auto!important;
+overflow-x:auto!important;
+	max-height: 600px;
+}
+@media only screen and (max-width:767px){
+.mtal-scrool{
+    max-height: 500px;
+}
+}
+/* MTAL=============================================================================================
+/*                                     تولتیپ حرفه‌ای 
+/* =============================================================================================CSS*/
+/* MTAL=============================================================================================
+/*           class:mtal-tooltip              Attribute:data-tooltip|"..."                           
+/* =============================================================================================CSS*/
+/* کادر مستقل تولتیپ که با جاوااسکریپت کنترل می‌شود 
+.mtal-custom-tooltip {
+    position: absolute;
+    background: #1e293b;
+    color: #ffffff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    line-height: 1.8;
+    white-space: wrap;
+    z-index: 99999;
+    pointer-events: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease-in-out;
+	max-width:250px;
+	height:auto;
+	text-align:center;
+	font-weight:bold;
+}*/
+
+/* فلش کوچک زیر کادر 
+.mtal-custom-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 4px;
+    border-style: solid;
+    border-color: #1e293b transparent transparent transparent;
+}*/
+
+/* ۱. استایل و نمایش آیکون SVG روی تگ span */
+.mtal-tooltip {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%236378f1' opacity='0.2' d='M30.667 16c0 8.1-6.567 14.667-14.667 14.667s-14.667-6.567-14.667-14.667 6.567-14.667 14.667-14.667 14.667 6.567 14.667 14.667z'/%3E%3Cpath fill='%236378f1' d='M16 29.333c-7.364 0-13.333-5.969-13.333-13.333s5.969-13.333 13.333-13.333c7.364 0 13.333 5.969 13.333 13.333s-5.969 13.333-13.333 13.333zM16 30.667c8.1 0 14.667-6.567 14.667-14.667s-6.567-14.667-14.667-14.667-14.667 6.567-14.667 14.667 6.567 14.667 14.667 14.667z'/%3E%3Cpath fill='%236378f1' d='M19.064 20.893c-0.007 0.003-0.507 0.3-0.976 0.401-0.26 0.056-0.376 0.025-0.413 0.009-0.189-0.080-0.541-0.227-0.245-1.38l0.555-2.16c0.329-1.284 0.172-2.421-0.444-3.204-0.504-0.64-1.277-0.987-2.176-0.977-0.324 0.004-0.645 0.040-0.957 0.109-1.152 0.266-2.129 0.895-2.829 1.757l-0.007 0.009c-0.058 0.081-0.093 0.182-0.093 0.291 0 0.277 0.224 0.501 0.501 0.501 0.093 0 0.181-0.026 0.256-0.070l-0.002 0.001c0.005-0.003 0.507-0.301 0.976-0.403 0.257-0.056 0.373-0.024 0.409-0.009 0.191 0.080 0.544 0.231 0.248 1.381l-0.555 2.161c-0.329 1.284-0.171 2.421 0.444 3.204 0.504 0.64 1.277 0.987 2.179 0.976 0.32-0.004 0.641-0.040 0.952-0.107 1.153-0.267 2.131-0.896 2.831-1.759l0.007-0.009c0.059-0.081 0.094-0.183 0.094-0.292 0-0.277-0.224-0.501-0.501-0.501-0.093 0-0.18 0.025-0.255 0.070l0.002-0.001zM16.331 12.252c1.135-0.252 1.97-1.25 1.97-2.443 0-1.381-1.119-2.5-2.5-2.5-0.188 0-0.371 0.021-0.547 0.060l0.017-0.003c-1.135 0.252-1.97 1.25-1.97 2.443 0 1.381 1.119 2.5 2.5 2.5 0.188 0 0.371-0.021 0.547-0.060l-0.017 0.003z'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* ۲. کادر مستقل تولتیپ (کنترل‌شده با جاوااسکریپت) */
+.mtal-custom-tooltip {
+    position: absolute;
+    background: #1e293b;
+    color: #ffffff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    line-height: 1.8;
+    white-space: normal;
+    z-index: 99999;
+    pointer-events: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease-in-out;
+    max-width: 250px;
+    height: auto;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* فلش کوچک زیر کادر */
+.mtal-custom-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 4px;
+    border-style: solid;
+    border-color: #1e293b transparent transparent transparent;
+}
+
+
+
 
