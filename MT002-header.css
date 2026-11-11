@@ -1,0 +1,60 @@
+
+<link rel="stylesheet" href="https://a.alachiqh.ir/wp-content/themes/mohammad-talebi-child-theme/MT002-header/style.css">
+
+
+/* MTAL=============================================================================================
+/*                                                 منو اصلی
+/* =============================================================================================CSS*/
+.frontmenu{
+	height: 100%;
+	width: 0;
+	position: fixed;
+	top: 0;
+	overflow-x: hidden;
+	transition: all 0.4s ease-in-out;
+	right: 0;
+	left: auto;
+	z-index: 999;
+	overflow-y:scroll;
+}
+.frontmenu.active{
+	width: 100%;
+}
+.frontmenu .e-con-inner{
+	margin: 0 !important;
+	flex-wrap:nowrap!important;
+}
+.frontmenu .elementor-item .elementor-icon-box-title{
+	text-wrap:nowrap!important;
+}
+
+.frontmenu .elementor-item{
+text-wrap: nowrap;
+}
+.frontmenu.active{
+width: 100%;
+}
+.frontmenu .e-con-inner{
+margin: 0!important;
+flex-wrap: nowrap!important;
+}
+
+/* CSS==============================================================================================
+/*                               چسبان کردن هدر در اسکرول                                                                  
+/* ===========================================================================================MTAL*/
+
+#headernav {
+transition : transform 0.4s ease, box-shadow 0.4s;
+}
+#headernav.headerHasShadow {
+box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3);
+}
+#headernav.headerup{
+transform: translateY(-110%);
+}
+.elementor-location-header::after {
+content: ''!important;
+height: 100px!important;
+display: block!important;
+}
+
