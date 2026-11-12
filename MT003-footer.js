@@ -1,3 +1,101 @@
+// JS===============================================================================================
+//                                            دکمه پرش اسکرول نرم به بالای سایت               
+// =============================================================================================MTAL
+
+document.addEventListener('DOMContentLoaded', function() {
+    const scrollBtns = document.querySelectorAll('.scroll-top-btn');
+    const hideOnScrollElements = document.querySelectorAll('.hide-on-scroll');
+    const moveElements = document.querySelectorAll('.move-element');
+    
+    let lastScrollTop = 0;
+    let isAtFooterEnd = false; // پرچم برای تشخیص رسیدن به انتهای فوتر
+
+    // ۱. رویداد کلیک دکمه
+    if (scrollBtns.length > 0) {
+        scrollBtns.forEach(function(scrollBtn) {
+            scrollBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // اگر دکمه چرخانده شده باشد یا به انتهای فوتر رسیده باشیم، با کلیک به بالا می‌رود
+                if (scrollBtn.classList.contains('show-btn') || isAtFooterEnd) {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    // در غیر این صورت به پایین‌ترین نقطه سایت هدایت می‌شود
+                    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                }
+            });
+        });
+    }
+
+    // ۲. رصد کردن دقیق ویجت تیتر آخر با کلاس footer-end-trigger
+    const footerTriggerElement = document.querySelector('.footer-end-trigger');
+    
+    if (footerTriggerElement) {
+        const observerOptions = {
+            root: null,
+            threshold: 0.05 // به محض اینکه ۵ درصد از این ویجت تیتر وارد کادر دید کاربر شود
+        };
+
+        const footerObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                isAtFooterEnd = entry.isIntersecting;
+                
+                scrollBtns.forEach(btn => {
+                    if (isAtFooterEnd) {
+                        btn.classList.add('show-btn'); // چرخش ۱۸۰ درجه آیکن
+                    } else if (window.pageYOffset <= 100) {
+                        btn.classList.remove('show-btn'); // حالت عادی در بالای صفحه
+                    }
+                });
+            });
+        }, observerOptions);
+
+        footerObserver.observe(footerTriggerElement);
+    }
+
+    // ۳. مدیریت اسکرول صفحه برای باتم‌بار و المان‌ها
+    window.addEventListener('scroll', function() {
+        let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+        if (currentScroll < 0) return;
+
+        // مدیریت چرخش آیکن هنگام اسکرول به بالا (اگر به انتهای فوتر نرسیده بودیم)
+        scrollBtns.forEach(function(btn) {
+            if (!isAtFooterEnd) {
+                if (currentScroll < lastScrollTop && currentScroll > 100) {
+                    btn.classList.add('show-btn');
+                } else if (currentScroll > lastScrollTop && currentScroll > 100) {
+                    btn.classList.remove('show-btn');
+                }
+            }
+            
+            if (currentScroll <= 50) {
+                btn.classList.remove('show-btn');
+            }
+        });
+
+        // ب) مدیریت باتم‌بار (.hide-on-scroll)
+        hideOnScrollElements.forEach(function(bar) {
+            let currentTransformY = bar.style.transform ? parseInt(bar.style.transform.replace(/[^-\d.]/g, '')) || 0 : 0;
+            let scrollDelta = currentScroll - lastScrollTop;
+            let newTransformY = currentTransformY + scrollDelta;
+
+            newTransformY = Math.max(0, Math.min(newTransformY, 80));
+
+            bar.style.transform = `translateY(${newTransformY}px)`;
+            bar.style.opacity = 1 - (newTransformY / 80);
+            bar.style.visibility = newTransformY >= 80 ? 'hidden' : 'visible';
+        });
+
+        // ج) مدیریت المان‌های .move-element
+        if (currentScroll > lastScrollTop) {
+            moveElements.forEach(el => el.classList.add('move-down'));
+        } else {
+            moveElements.forEach(el => el.classList.remove('move-down'));
+        }
+
+        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    });
+});
 // MTAL=============================================================================================
 //                                            کارت مشخصات حرفه‌ای
 // ===============================================================================================JS
