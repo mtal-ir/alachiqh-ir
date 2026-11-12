@@ -1,9 +1,3 @@
-
-<script src="https://a.alachiqh.ir//wp-content/themes/mohammad-talebi-child-theme/MT003-footer/script.js"></script>
-
-
-
-
 // MTAL=============================================================================================
 //                                            کارت مشخصات حرفه‌ای
 // ===============================================================================================JS
@@ -38,40 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // JS===============================================================================================
 //                                            دکمه پرش اسکرول نرم به بالای سایت               
 // =============================================================================================MTAL
-/*
-document.addEventListener('DOMContentLoaded', function() {
-    const scrollBtn = document.getElementById('scroll-top-btn');
-    let lastScrollTop = 0;
 
-    if (scrollBtn) {
-        // کلیک برای اسکرول نرم به بالای صفحه
-        scrollBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-
-        // تشخیص جهت اسکرول
-        window.addEventListener('scroll', function() {
-            let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-
-            if (currentScroll > lastScrollTop && currentScroll > 200) {
-                // اسکرول به سمت پایین -> پنهان شدن دکمه
-                scrollBtn.classList.remove('show-btn');
-            } else if (currentScroll < lastScrollTop) {
-                // اسکرول به سمت بالا -> ظاهر شدن دکمه
-                scrollBtn.classList.add('show-btn');
-            }
-
-            // اگر کاربر به ابتدای صفحه نزدیک بود، دکمه کلاً مخفی بماند
-            if (currentScroll <= 100) {
-                scrollBtn.classList.remove('show-btn');
-            }
-
-            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-        });
-    }
-	});
-*/
 document.addEventListener('DOMContentLoaded', function() {
     const scrollBtns = document.querySelectorAll('.scroll-top-btn');
     const hideOnScrollElements = document.querySelectorAll('.hide-on-scroll');
@@ -79,56 +40,62 @@ document.addEventListener('DOMContentLoaded', function() {
     
     let lastScrollTop = 0;
 
-    // ۱. رویداد کلیک برای دکمه‌های بازگشت به بالا
+    // ۱. رویداد کلیک دکمه بر اساس جهت فعلی فلش (کلاس show-btn)
     if (scrollBtns.length > 0) {
         scrollBtns.forEach(function(scrollBtn) {
             scrollBtn.addEventListener('click', function(e) {
                 e.preventDefault();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                
+                // اگر دکمه رو به بالا باشد (کلاس show-btn را داشته باشد)، با کلیک به بالای صفحه می‌رود
+                if (scrollBtn.classList.contains('show-btn')) {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    // اگر دکمه رو به پایین باشد، با کلیک به پایین‌ترین نقطه صفحه هدایت می‌شود
+                    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                }
             });
         });
     }
 
-    // ۲. مدیریت اسکرول برای باتم‌بار، دکمه پرش به بالا و المان‌های حرکتی
+    // ۲. مدیریت اسکرول صفحه (تغییر جهت خودکار فلش بر اساس اسکرول و رسیدن به انتها)
     window.addEventListener('scroll', function() {
         let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
         if (currentScroll < 0) return;
 
-        // الف) مدیریت دکمه پرش به بالا (مانند قبل با کلاس و ترنزیشن)
+        // محاسبه اینکه آیا کاربر به انتهای صفحه (فوتر) رسیده است یا خیر
+        const isAtBottom = (window.innerHeight + window.pageYOffset) >= document.body.offsetHeight - 50;
+
+        // الف) مدیریت جهت دکمه (کلاس show-btn برای چرخش ۱۸۰ درجه)
         scrollBtns.forEach(function(btn) {
-            if (currentScroll > lastScrollTop && currentScroll > 200) {
-                btn.classList.remove('show-btn');
-            } else if (currentScroll < lastScrollTop) {
+            // اگر کاربر به انتهای صفحه رسیده باشد یا در حال اسکرول به سمت بالا باشد، فلش رو به بالا می‌چرخد
+            if (isAtBottom || (currentScroll < lastScrollTop && currentScroll > 100)) {
                 btn.classList.add('show-btn');
+            } 
+            // اگر کاربر به سمت پایین اسکرول کند و در بالای صفحه/وسط صفحه باشد، فلش رو به پایین قرار می‌گیرد
+            else if (currentScroll > lastScrollTop && currentScroll > 100) {
+                btn.classList.remove('show-btn');
             }
-            if (currentScroll <= 100) {
+            // در صورتی که خیلی نزدیک به بالای صفحه باشیم، حالت پیش‌فرض (رو به پایین) فعال می‌شود
+            if (currentScroll <= 50) {
                 btn.classList.remove('show-btn');
             }
         });
 
-        // ب) حرکت پیکسل‌به‌پیکسل و کاملاً همگام باتم‌بار (.hide-on-scroll)
-        // محاسبه میزان جابجایی نسبت به آخرین اسکرول
+        // ب) مدیریت باتم‌بار (.hide-on-scroll)
         hideOnScrollElements.forEach(function(bar) {
-            // دریافت مقدار فعلی translateY یا تنظیم مقدار اولیه
             let currentTransformY = bar.style.transform ? parseInt(bar.style.transform.replace(/[^-\d.]/g, '')) || 0 : 0;
             
-            // اگر به سمت پایین اسکرول می‌کنیم، باتم‌بار به پایین هدایت شود (حداکثر تا ارتفاع خودش مثلا 100px)
-            // و اگر به سمت بالا اسکرول می‌کنیم، به جایگاه اصلی برگردد (0px)
             let scrollDelta = currentScroll - lastScrollTop;
             let newTransformY = currentTransformY + scrollDelta;
 
-            // محدود کردن جابجایی بین 0 (حالت عادی) و 80 یا 100 پیکسل (مخفی شدن کامل در پایین)
-            // (می‌توانید عدد 80 را بسته به ارتفاع باتم‌بار خودتان تغییر دهید)
             newTransformY = Math.max(0, Math.min(newTransformY, 80));
 
             bar.style.transform = `translateY(${newTransformY}px)`;
-            
-            // مدیریت شفافیت همزمان با جابجایی پیکسل‌به‌پیکسل
             bar.style.opacity = 1 - (newTransformY / 80);
             bar.style.visibility = newTransformY >= 80 ? 'hidden' : 'visible';
         });
 
-        // ج) مدیریت المان‌های .move-element (کد قبلی شما)
+        // ج) مدیریت المان‌های .move-element
         if (currentScroll > lastScrollTop) {
             moveElements.forEach(el => el.classList.add('move-down'));
         } else {
