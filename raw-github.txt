@@ -1,0 +1,16 @@
+https://github.com/mtal-ir/alachiqh-ir/raw/refs/heads/main/MT001-entire-site/script.js
+https://github.com/mtal-ir/alachiqh-ir/raw/refs/heads/main/MT001-entire-site/style.css
+https://github.com/mtal-ir/alachiqh-ir/raw/refs/heads/main/MT002-header/script.js
+https://github.com/mtal-ir/alachiqh-ir/raw/refs/heads/main/MT002-header/style.css
+https://github.com/mtal-ir/alachiqh-ir/raw/refs/heads/main/MT003-footer/script.js
+https://github.com/mtal-ir/alachiqh-ir/raw/refs/heads/main/MT003-footer/style.css
+https://github.com/mtal-ir/alachiqh-ir/raw/refs/heads/main/MT004-home/script.js
+https://github.com/mtal-ir/alachiqh-ir/raw/refs/heads/main/MT004-home/style.css
+https://github.com/mtal-ir/alachiqh-ir/raw/refs/heads/main/MT005-suites/script.js
+https://github.com/mtal-ir/alachiqh-ir/raw/refs/heads/main/MT005-suites/style.css
+https://github.com/mtal-ir/alachiqh-ir/raw/refs/heads/main/MT006-suits-archive/script.js
+https://github.com/mtal-ir/alachiqh-ir/raw/refs/heads/main/MT006-suits-archive/style.css
+https://github.com/mtal-ir/alachiqh-ir/raw/refs/heads/main/loginwp/mtallogin.php
+https://github.com/mtal-ir/alachiqh-ir/raw/refs/heads/main/loginwp/mtalloginstyle.css
+https://github.com/mtal-ir/alachiqh-ir/raw/refs/heads/main/persian-datepicker/assets/js/datepicker-init.js
+https://github.com/mtal-ir/alachiqh-ir/raw/refs/heads/main/persian-datepicker/assets/js/persian-calendar-standalone.js
