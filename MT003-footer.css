@@ -189,14 +189,14 @@ opacity: 1;
     transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
     opacity: 1;
     visibility: visible;
-    transform: translateY(0) rotate(0deg);
+    transform: translateY(0) rotate(0deg)!important;
 }
 
 /* وقتی کلاس show-btn را می‌گیرد، ۱۸۰ درجه می‌چرخد تا برای رفتن به بالا آماده شود */
 .scroll-top-btn.show-btn {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0) rotate(180deg);
+    transform: translateY(0) rotate(180deg)!important;
 }
 
 /* استایل پیش‌فرض برای باتم‌بار (در بالای صفحه نمایان است) */
