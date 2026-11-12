@@ -1,10 +1,3 @@
-
-<link rel="stylesheet" href="https://a.alachiqh.ir/wp-content/themes/mohammad-talebi-child-theme/MT003-footer/style.css">
-
-
-
-
-
 /* MTAL=============================================================================================
 /*                                                    کارت اطلاعات حرفه‌ای
 /* =============================================================================================CSS*/
@@ -171,7 +164,7 @@ opacity: 1;
     padding-top: 0 !important;
 }
 /* MTAL=============================================================================================
-/*                                              افکت هاور لیسن آیکن
+/*                                              افکت هاور لیست آیکن
 /* =============================================================================================CSS*/	
 
 .mtallist .elementor-icon-list-item:before{
@@ -191,24 +184,24 @@ opacity: 1;
 /* CSS==============================================================================================
 /*                                               ضاهر شدن باتم بار و دکمه‌ها                  
 /* =============================================================================================MTAL*/
-/* استایل پیش‌فرض برای دکمه پرش به بالا (در بالای صفحه مخفی است) */
+/* استایل پیش‌فرض برای دکمه (همیشه نمایان است و در حالت عادی به سمت پایین هدایت می‌کند) */
 .scroll-top-btn {
     transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(30px);
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) rotate(0deg);
+}
+
+/* وقتی کلاس show-btn را می‌گیرد، ۱۸۰ درجه می‌چرخد تا برای رفتن به بالا آماده شود */
+.scroll-top-btn.show-btn {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) rotate(180deg);
 }
 
 /* استایل پیش‌فرض برای باتم‌بار (در بالای صفحه نمایان است) */
 .hide-on-scroll {
     transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-/* حالت نمایش برای هر دو وقتی کلاس show-btn را می‌گیرند یا فعالند */
-.scroll-top-btn.show-btn {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
@@ -221,7 +214,7 @@ opacity: 1;
     transform: translateY(30px);
 }
 
-/*جابجایی المانها با اسکرول*/
+/* جابجایی المانها با اسکرول */
 .move-element {
   transition: transform 0.3s ease !important;
 }
@@ -261,4 +254,3 @@ display: flex;
 justify-content: center;
 align-items: center;
 }
-
