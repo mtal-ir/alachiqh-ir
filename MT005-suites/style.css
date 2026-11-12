@@ -1,0 +1,201 @@
+/* MTAL=============================================================================================
+/*                                                  مودال فرم رزرو موبایل و تبلت
+/* =============================================================================================CSS*/
+/**/
+@media only screen and (max-width:1024px){
+.frontreserve{
+position: fixed;
+top: 0!important;
+right: 0!important;
+left: 0;
+width: 100%!important;
+z-index: 9999!important;
+
+background-color: #1A1A1A78;
+backdrop-filter: blur(5px);
+display: none;
+transition: 0.3s linear;
+
+}
+.frontreserve.open{
+display: flex;
+}
+}
+/* MTAL=============================================================================================
+/*                                                  عکسهای بالای صفحه
+/* =============================================================================================CSS*/
+/*فلش های گالری تصاویر*/
+.mtal-slider-pic-suites .jet-engine-gallery-slider .jet-engine-arrow
+ {
+    border-radius: 50px;
+    margin: 0px 10px 0px 10px;
+    padding: 3px 3px;
+}
+/*دکمه‌های مدیا*/
+.mtal-suits-media {
+    backdrop-filter: blur(2px);
+	display: flex;
+	cursor: pointer;
+}
+.mtal-suites-play-icon {
+    display: flex;
+    background: #F1F1F166;
+    padding: 5px;
+    border-radius: 50%;
+    backdrop-filter: blur(2px);
+}
+/* MTAL=============================================================================================
+/*                                                  کارت جاباما و جاجیگا و اتاقک
+/* =============================================================================================CSS*/
+
+/**/
+ .section {
+      margin-bottom: 4rem;
+    }
+    .testimonial-wrapper {
+      padding: 5rem 2rem;
+      border-radius: 0.5rem;
+      min-height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .light-theme {
+      background-color: transparent;
+    }
+    .dark-theme {
+      background-color: #060507;
+    }
+    .testimonial-container {
+      width: 100%;
+      max-width: 56rem;
+      padding: 2rem;
+    }
+    .testimonial-grid {
+      display: grid;
+      gap: 20px;
+    }
+    .image-container {
+      position: relative;
+      width: 100%;
+      height: 24rem;
+      perspective: 1000px;
+    }
+    .testimonial-image  {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 1;
+    transition: all 0.8s cubic-bezier(0.4, 2, 0.3, 1);
+    }
+    .testimonial-image img {
+        
+      object-fit: cover !important;
+      border-radius: 1.5rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+
+        
+    }
+        
+    .testimonial-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .content-wrapper {
+      min-height: 250px;
+    }
+    .testimonial-item {
+      display: none;
+    }
+    .testimonial-item.active {
+      display: block;
+    }
+    .name {
+      font-weight: bold;
+      margin-bottom: 0.25rem;
+    }
+    .designation {
+      margin-bottom: 2rem;
+    }
+    .quote {
+        margin-top: 20px;
+      line-height: 1.75;
+      margin-bottom: 2rem;
+    }
+    .quote-word {
+      display: inline-block;
+      opacity: 0;
+      filter: blur(10px);
+      transform: translateY(5px);
+    }
+    .quote-word.animate {
+      animation: wordFadeIn 0.22s ease-in-out forwards;
+    }
+    @keyframes wordFadeIn {
+      to {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0);
+      }
+    }
+    .arrow-button {
+      transition: background-color 0.3s, transform 0.2s;
+
+    }
+    .arrow-button:hover {
+      transform: scale(1.05);
+    }
+    @media (min-width: 768px) {
+      .testimonial-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 5rem;
+      }
+      .arrow-buttons {
+        padding-top: 0;
+      }
+    }
+    @media (max-width: 767px) {
+      .testimonial-wrapper {
+        padding: 3rem 1rem;
+      }
+      .testimonial-container {
+        padding: 1rem;
+      }
+      .image-container {
+        height: 18rem;
+      }
+      .content-wrapper {
+        min-height: auto;
+      }
+    }
+/* تنظیم تگ لینک المنتور تا روی اندازه عکس تأثیر نگذارد */
+.testimonial-image a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* اطمینان از اینکه خود تصویر دقیقاً فضا را پر می‌کند */
+.testimonial-image img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+.testimonial-wrapper {
+  padding: 20px 10px !important;
+  min-height: auto !important;
+}
+.section {
+  margin-bottom: 20px !important;
+}
+/* مخفی کردن دکمه‌های قبلی و بعدی در موبایل و تبلت (زیر 1024 پیکسل) */
+@media (max-width: 1023px) {
+.arrow-buttons {
+    display: none !important;
+  }
+}
+  .prev-button,
+.next-button{
+	cursor:pointer;
+}

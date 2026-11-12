@@ -1,0 +1,131 @@
+/* CSS==============================================================================================
+/*                                     استایل و تصویر لوگو                                                               
+/* ===========================================================================================MTAL*/
+.login h1 a {
+   display:none;
+}
+h1.wp-login-logo {
+    background-image: url('../loginwp/pic/mtal-icon.webp')!important;
+    width: 100%;
+    height: 100px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100px;
+}
+/* CSS==============================================================================================
+/*                                          فونت                                                               
+/* ===========================================================================================MTAL*/
+@font-face {
+	font-family: 'mtal-Estedad';
+	src:url('../loginwp/font/Estedad-Regular.woff2')format('woff2');
+}
+*{
+font-family:"mtal-Estedad";
+}
+
+/* CSS==============================================================================================
+/*                                    استایل ظاهری فرم و پس زمینه                                                              
+/* ===========================================================================================MTAL*/
+
+span.dashicons.dashicons-visibility , span.dashicons.dashicons-hidden , span.dashicons.dashicons-editor-help , span.dashicons.dashicons-translation {
+    font-family: dashicons !important;
+}
+body.login.js.login-action-login.wp-core-ui.admin-color-modern.locale-fa-ir{
+    background-image: url(../loginwp/pic/mtal-login-bg.webp);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+body.login.js.login-action-login.wp-core-ui.admin-color-modern.rtl.locale-fa-ir {
+    background-image: url(../loginwp/pic/mtal-login-bg.webp);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+div#login {
+    padding: 10px;
+    background-color: #0000008c;
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+    border: 1px solid #02d6fd8f;
+    color: white;
+}
+
+form#loginform {
+    background: transparent;
+    border: none;
+}
+
+a.wp-login-lost-password , .login #backtoblog a, .login #nav a {
+    color: white!important;
+}
+
+input#user_login , input#user_pass , input#rememberme {
+    background: transparent;
+    border: 1px solid #ffffffa3;
+    border-radius: 30px;
+	color: white;
+    font-size: 15px;
+    padding-left: 10px;
+}
+
+input#wp-submit {
+    padding: 0 25px;
+    min-height: 0;
+    line-height: 30px;
+    border-radius: 30px;
+    background-color: #792986;
+    width: 100%;
+    margin-top: 20px;
+	border:none;
+}
+span.dashicons.dashicons-visibility , span.dashicons.dashicons-hidden {
+    color: white;
+}
+span.dashicons.dashicons-visibility , span.dashicons.dashicons-hidden {
+    color: white;
+}
+
+
+.language-switcher {
+    position: fixed;
+    bottom: -15px;
+    display: flex;
+    padding: 0;
+}
+
+form#language-switcher {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 20px;
+}
+span.dashicons.dashicons-editor-help {
+    color: white;
+}
+/* CSS==============================================================================================
+/*                                         نوتیفیکیشن                                                        
+/* ===========================================================================================MTAL*/
+
+.message , .notice , .success {
+    color: rgb(0, 0, 255);
+    border-radius: 10px 0px 0px 10px;
+}
+
+/* CSS==============================================================================================
+/*                                                                                                  
+/* ===========================================================================================MTAL*/
+
+
+

@@ -1,0 +1,104 @@
+/* MTAL=============================================================================================
+/*                                      کارت معرفی سوئیت‌ها
+/* =============================================================================================CSS*/
+
+.mtal-discount-loop{
+    background-color: #08d3fd;
+    padding: 5px 10px;
+    border-radius: 10px;
+	font-family:MTALyekanbakh;
+}
+body[data-elementor-device-mode=desktop] .mtal-loop-home{
+    position: absolute;
+    right: 0;
+    padding: 10px;
+    bottom: -65px;
+    background-color: white;
+    transition: 0.3s cubic-bezier(.59,.48,.66,.74);
+}
+body[data-elementor-device-mode=desktop] .mtal-download-box-loop:hover .mtal-loop-home{
+    bottom: 0;
+    
+}
+body[data-elementor-device-mode=desktop] .mtal-loop-home:before , .mtal-loop-home:after{
+    content: "";
+    background-color: transparent;
+    box-shadow: 0 20px 0 0 white;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: -40px;
+    
+}
+body[data-elementor-device-mode=desktop] .mtal-loop-home:before{
+    border-bottom-left-radius: 10px;
+    left: 0;
+}
+body[data-elementor-device-mode=desktop] .mtal-loop-home:after{
+  border-bottom-right-radius: 10px;
+  right: 0;
+}
+.mtal-doenload-title-loop a{
+display: -webkit-box;
+-webkit-line-clamp: 1;
+-webkit-box-orient: vertical;
+overflow: hidden;
+}
+/*کره های معرفی سوئیتها*/
+.mtal-scure-back{
+    opacity: 40%;
+}
+/* MTAL=============================================================================================
+/*                                     ابتدا  انیمیشن سوئیتها
+/* =============================================================================================CSS*/
+/* استایل پایه برای آیکون‌های سوئیت با سایز ۷۰ پیکسل */
+.mtal-suite-icon-item ,
+.mtal-suite-icon {
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+/* --- انیمیشن پیانویی مخالف (یکی در میان معکوس) --- */
+@media (min-width: 767px) {
+/* ویجت‌های فرد (شماره ۱، ۳ و ۵): حرکت به سمت بالا */
+.mtal-suite-icon-item {
+    animation: mtalMoveUp 4s ease-in-out infinite !important;
+}
+
+/* ویجت‌های زوج (شماره ۲ و ۴): حرکت هم‌زمان اما به سمت پایین (معکوس) */
+.mtal-suite-icon{
+    animation: mtalMoveDown 4s ease-in-out infinite !important;
+}
+
+/* تعریف انیمیشن بالا رونده */
+@keyframes mtalMoveUp {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px); /* میره بالا */
+    }
+}
+
+/* تعریف انیمیشن پایین رونده (مخالف اولی) */
+@keyframes mtalMoveDown {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(8px); /* میره پایین در همان لحظه */
+    }
+}
+
+/* افکت هاور هنگام بردن ماوس روی آیکون‌ها */
+.mtal-suite-icon-item:hover ,
+.mtal-suite-icon:hover{
+    transform: scale(1.1) translateY(0) !important;
+}
+}
+/*حالت اسکرول موبایل*/
+@media (max-width:767px){
+.mtal-suites-iconbox-counter{
+    overflow-x: scroll!important;
+    text-wrap: nowrap!important;
+}}

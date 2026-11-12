@@ -1,3 +1,6 @@
+
+
+
 /* MTAL=============================================================================================
 /*                                                 استایل درخشش المان
 /* =============================================================================================CSS*/
@@ -36,6 +39,32 @@
         mask-position: -20% -20%
     }
 }
+/*افکت کارت تماس*/
+.mtal-effect{
+ animation: mtal-pulse 2s infinite ease-in-out;
+}
+
+@keyframes mtal-pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.06);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/*فلش های گالری تصاویر*/
+.mtal-slider-pic-suites .jet-engine-gallery-slider .jet-engine-arrow
+ {
+    border-radius: 50px;
+    margin: 0px 10px 0px 10px;
+    padding: 3px 3px;
+}
+
+
 
 /* MTAL=============================================================================================
 /*                                                  مودال آرشیو سوئیتها
@@ -63,29 +92,18 @@
     visibility: visible;
     opacity: 1;
 }
-/*انیمیشن دکمه بستن*/
-.mtal-effect{
- animation: mtal-pulse 2s infinite ease-in-out;
-}
 
-@keyframes mtal-pulse {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.06);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
+
 /* MTAL=============================================================================================
 /*                            حذف فضای اضافی پایین آیکن های کتابخانه   
 /* =============================================================================================CSS*/
 .elementor-icon-wrapper {
     display: flex;
 }
-
+/*حذف بکگراند آبی لینکها*/
+* {
+  -webkit-tap-highlight-color: transparent;
+}
 /* MTAL=============================================================================================
 /*                                      تغییر فلش موس  
 /* =============================================================================================CSS*/
@@ -221,6 +239,14 @@ overflow-x:auto!important;
     border-style: solid;
     border-color: #1e293b transparent transparent transparent;
 }
+
+
+
+
+
+
+
+
 
 
 
