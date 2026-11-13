@@ -182,7 +182,7 @@ opacity: 1;
 
 
 /* CSS==============================================================================================
-/*                                               ضاهر شدن باتم بار و دکمه‌ها                  
+/*                                               ظاهر شدن باتم بار و دکمه‌ها                  
 /* =============================================================================================MTAL*/
 /* استایل پیش‌فرض برای دکمه پرش به بالا */
 .scroll-top-btn {
@@ -216,7 +216,7 @@ opacity: 1;
     transform: translateY(0) rotate(180deg) !important;
 }
 
-/* استایل پیش‌فرض برای باتم‌بار (در بالای صفحه نمایان است) */
+/* استایل پیش‌فرض برای باتم‌بار */
 .hide-on-scroll {
     transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
     opacity: 1;
@@ -224,13 +224,13 @@ opacity: 1;
     transform: translateY(0);
 }
 
-/* برای باتم‌بار، وقتی کلاس hide را می‌گیرد مخفی می‌شود */
+/* وقتی کلاس hide-bar را می‌گیرد، دقیقاً مانند دکمه به سمت پایین می‌رود و محو می‌شود */
 .hide-on-scroll.hide-bar {
     opacity: 0;
     visibility: hidden;
-    transform: translateY(30px);
+    transform: translateY(50px); /* مقدار جابجایی به سمت پایین */
+    pointer-events: none;
 }
-
 /* جابجایی سایر المان‌ها با اسکرول (حفظ‌شده برای بخش‌های دیگر) */
 .move-element {
     transition: transform 0.3s ease !important;
