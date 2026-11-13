@@ -11,7 +11,7 @@
 	right: 0;
 	left: auto;
 	z-index: 999;
-	overflow-y:scroll;
+	/*overflow-y:scroll;*/
 }
 .frontmenu.active{
 	width: 100%;
@@ -55,4 +55,28 @@ height: 100px!important;
 display: block!important;
 }
 */
+/* CSS==============================================================================================
+/*                               متن و آیکن منو                                                                   
+/* ===========================================================================================MTAL*/
+
+span.elementor-icon-list-text {
+    width: 70%;
+    margin-right: auto;
+}
+
+span.elementor-icon-list-icon {
+    margin-right: 10px;
+}
+
+li.elementor-icon-list-item.active .elementor-icon-list-icon svg path,
+li.elementor-icon-list-item:hover .elementor-icon-list-icon svg path {
+    fill: #637426;
+}
+
+li.elementor-icon-list-item.active .elementor-icon-list-text,
+li.elementor-icon-list-item:hover .elementor-icon-list-text {
+    background: #ececec;
+    border-radius: 0 50px 50px 0;
+    color: #637426 !important;
+}
 

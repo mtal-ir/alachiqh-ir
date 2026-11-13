@@ -73,3 +73,32 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 50);//سرعت باز شدن در اسکرول
     });
 });
+// JS===============================================================================================
+//                           کلاس فعال (Active) در صفحه فعلی منو
+// =============================================================================================MTAL
+
+document.addEventListener('DOMContentLoaded', function () {
+    const currentUrl = window.location.href.replace(/\/\$/, "");
+    const links = document.querySelectorAll('a.elementor-icon-list-item, .elementor-icon-list-item a');
+
+    links.forEach(link => {
+        if (link.href) {
+            const linkUrl = link.href.replace(/\/\$/, "");
+            if (linkUrl === currentUrl) {
+                const listItem = link.closest('.elementor-icon-list-item');
+                if (listItem) {
+                    listItem.classList.add('active');
+                }
+            }
+        }
+    });
+});
+
+
+    jQuery(document).ready(function($){
+  $('.mtal-drop').ripples({
+	resolution: 512,
+	dropRadius: 20,
+	perturbance: 0.04,
+});  
+});
