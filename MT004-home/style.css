@@ -1,13 +1,6 @@
 /* MTAL=============================================================================================
 /*                                      کارت معرفی سوئیت‌ها
 /* =============================================================================================CSS*/
-
-.mtal-discount-loop{
-    background-color: #08d3fd;
-    padding: 5px 10px;
-    border-radius: 10px;
-	font-family:MTALyekanbakh;
-}
 body[data-elementor-device-mode=desktop] .mtal-loop-home{
     position: absolute;
     right: 0;
