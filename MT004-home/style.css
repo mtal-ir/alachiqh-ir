@@ -95,3 +95,38 @@ overflow: hidden;
     overflow-x: scroll!important;
     text-wrap: nowrap!important;
 }}
+/* CSS==============================================================================================
+/*                            استایل بخش نظرات                                     
+/* =============================================================================================MTAL*/
+.mtal-comment-user .swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-horizontal {
+bottom: -36px;
+top: auto;
+}
+
+.mtal-comment-user span.swiper-pagination-bullet.swiper-pagination-bullet-active {
+    width: 26px;
+    border-radius: 20px;
+}
+@media only screen and (min-width:1025px){
+
+.swiper-slide:not(.swiper-slide-next) .mtal-user-profile-comment{
+opacity:0.5;
+filter:blur(4px);
+transform:scale(0.6);
+
+
+
+}
+
+.swiper-slide:not(.swiper-slide-next) .mtal-mini-icon-comment ,.swiper-slide:not(.swiper-slide-next) .mtal-title-user-comment , .swiper-slide:not(.swiper-slide-next) .mtal-star-user-comment , .swiper-slide:not(.swiper-slide-next) .mtal-desc-user-comment {
+
+transform:scale(0);
+transition:0.3s linear !important;
+}
+
+.swiper-slide-next .mtal-mini-icon-comment ,.swiper-slide-next .mtal-title-user-comment , .swiper-slide-next .mtal-star-user-comment , .swiper-slide-next .mtal-desc-user-comment {
+transform:scale(1);
+transition:0.3s linear !important;
+
+}
+}

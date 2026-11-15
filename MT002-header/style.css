@@ -1,24 +1,25 @@
 /* MTAL=============================================================================================
 /*                                                 منو اصلی
 /* =============================================================================================CSS*/
-.frontmenu{
-	height: 100%;
-	width: 0;
-	position: fixed;
-	top: 0;
-	overflow-x: hidden;
-	transition: all 0.4s ease-in-out;
-	right: 0;
-	left: auto;
-	z-index: 999;
-	/*overflow-y:scroll;*/
+.frontmenu {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    overflow-x: hidden;
+    transition: all 0.4s ease-in-out;
+    right: 0;
+    left: auto;
+    z-index: 999;
+    pointer-events: none; /* جلوگیری از مسدود کردن کلیک‌ها و لمس صفحه در حالت بسته */
 }
-.frontmenu.active{
-	width: 100%;
+.frontmenu.active {
+    width: 100%;
+    pointer-events: auto; /* فعال شدن لایه فقط زمان باز بودن منو */
 }
-.frontmenu .e-con-inner{
-	margin: 0 !important;
-	flex-wrap:nowrap!important;
+.frontmenu .e-con-inner {
+    margin: 0 !important;
+    flex-wrap: nowrap !important;
 }
 .frontmenu .elementor-item .elementor-icon-box-title{
 	text-wrap:nowrap!important;
@@ -38,7 +39,7 @@ flex-wrap: nowrap!important;
 /* CSS==============================================================================================
 /*                               چسبان کردن هدر در اسکرول                                                                  
 /* ===========================================================================================MTAL*/
-
+/*
 #headernav {
 transition : transform 0.4s ease, box-shadow 0.4s;
 }
@@ -48,7 +49,7 @@ box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3);
 #headernav.headerup{
 transform: translateY(-110%);
 }
-/*
+
 .elementor-location-header::after {
 content: ''!important;
 height: 100px!important;
@@ -58,25 +59,26 @@ display: block!important;
 /* CSS==============================================================================================
 /*                               متن و آیکن منو                                                                   
 /* ===========================================================================================MTAL*/
-
-span.elementor-icon-list-text {
+.mtal-main-iconmenu span.elementor-icon-list-text {
     width: 70%;
     margin-right: auto;
 }
 
-span.elementor-icon-list-icon {
+.mtal-main-iconmenu span.elementor-icon-list-icon {
     margin-right: 10px;
+	
 }
 
-li.elementor-icon-list-item.active .elementor-icon-list-icon svg path,
-li.elementor-icon-list-item:hover .elementor-icon-list-icon svg path {
-    fill: #637426;
+.mtal-main-iconmenu li.elementor-icon-list-item.urlactive .elementor-icon-list-icon svg path,
+.mtal-main-iconmenu li.elementor-icon-list-item:hover .elementor-icon-list-icon svg path {
+    fill: #637426!important;
+	
 }
 
-li.elementor-icon-list-item.active .elementor-icon-list-text,
-li.elementor-icon-list-item:hover .elementor-icon-list-text {
-    background: #ececec;
+.mtal-main-iconmenu li.elementor-icon-list-item.urlactive .elementor-icon-list-text,
+.mtal-main-iconmenu li.elementor-icon-list-item:hover .elementor-icon-list-text {
+    background: #E2E9D6;
     border-radius: 0 50px 50px 0;
     color: #637426 !important;
+	
 }
-

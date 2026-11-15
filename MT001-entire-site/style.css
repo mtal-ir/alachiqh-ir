@@ -64,7 +64,7 @@
 
 
 /* MTAL=============================================================================================
-/*                                                  مودال آرشیو سوئیتها
+/*                                                  مودال عمومی
 /* =============================================================================================CSS*/
 /* کانتینر اصلی مودال (پس‌زمینه کل صفحه) */
 .mtal-front {
@@ -89,7 +89,14 @@
     visibility: visible;
     opacity: 1;
 }
-
+/* پنهان کردن تمام پنل‌ها به صورت پیش‌فرض */
+.mtal-pane {
+    display: none;
+}
+/* نمایش فقط پنلی که کلاس active دارد */
+.mtal-pane.active-pane {
+    display: block;
+}
 
 /* MTAL=============================================================================================
 /*                            حذف فضای اضافی پایین آیکن های کتابخانه   
@@ -156,40 +163,6 @@ overflow-x:auto!important;
 /* MTAL=============================================================================================
 /*           class:mtal-tooltip              Attribute:data-tooltip|"..."                           
 /* =============================================================================================CSS*/
-/* کادر مستقل تولتیپ که با جاوااسکریپت کنترل می‌شود 
-.mtal-custom-tooltip {
-    position: absolute;
-    background: #1e293b;
-    color: #ffffff;
-    padding: 5px 10px;
-    border-radius: 4px;
-    font-size: 12px;
-    line-height: 1.8;
-    white-space: wrap;
-    z-index: 99999;
-    pointer-events: none;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.2s ease-in-out;
-	max-width:250px;
-	height:auto;
-	text-align:center;
-	font-weight:bold;
-}*/
-
-/* فلش کوچک زیر کادر 
-.mtal-custom-tooltip::after {
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    border-width: 4px;
-    border-style: solid;
-    border-color: #1e293b transparent transparent transparent;
-}*/
-
 /* ۱. استایل و نمایش آیکون SVG روی تگ span */
 .mtal-tooltip {
     display: inline-block;
