@@ -15,3 +15,4 @@ https://github.com/mtal-ir/alachiqh-ir/raw/refs/heads/main/loginwp/mtallogin.php
 https://github.com/mtal-ir/alachiqh-ir/raw/refs/heads/main/loginwp/mtalloginstyle.css
 https://github.com/mtal-ir/alachiqh-ir/raw/refs/heads/main/persian-datepicker/assets/js/datepicker-init.js
 https://github.com/mtal-ir/alachiqh-ir/raw/refs/heads/main/persian-datepicker/assets/js/persian-calendar-standalone.js
+test
