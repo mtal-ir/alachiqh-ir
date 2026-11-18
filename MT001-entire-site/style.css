@@ -1,4 +1,40 @@
 /* MTAL=============================================================================================
+/*                                                  مودال عمومی
+/* =============================================================================================CSS*/
+/* کانتینر اصلی مودال (پس‌زمینه کل صفحه) 
+*/
+.mtal-front {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* پس‌زمینه تیره شفاف */
+    backdrop-filter: blur(5px);
+    z-index: 9999;
+    display: none; /* در حالت عادی کلاً مخفی و از رندر خارج می‌شود */
+    justify-content: flex-end; /* برای باز شدن از سمت راست (سایدبار) */
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+}
+ /*پنهان کردن تمام پنل‌ها به صورت پیش‌فرض 
+*/
+.mtal-pane {
+    display: none;
+}
+
+/* حالت فعال شدن مودال */
+.mtal-front.active {
+    display: flex; /* موقع فعال شدن نمایش داده می‌شود */
+    visibility: visible;
+    opacity: 1;
+}
+/* نمایش فقط پنلی که کلاس active دارد */
+.mtal-pane.active-pane {
+    display: block;
+}
+/* MTAL=============================================================================================
 /*                                                 استایل درخشش المان
 /* =============================================================================================CSS*/
 .mtal-logo {
@@ -63,40 +99,6 @@
 
 
 
-/* MTAL=============================================================================================
-/*                                                  مودال عمومی
-/* =============================================================================================CSS*/
-/* کانتینر اصلی مودال (پس‌زمینه کل صفحه) */
-.mtal-front {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); /* پس‌زمینه تیره شفاف */
-    backdrop-filter: blur(5px);
-    z-index: 9999;
-    display: none; /* در حالت عادی کلاً مخفی و از رندر خارج می‌شود */
-    justify-content: flex-end; /* برای باز شدن از سمت راست (سایدبار) */
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
-}
-
-/* حالت فعال شدن مودال */
-.mtal-front.active {
-    display: flex; /* موقع فعال شدن نمایش داده می‌شود */
-    visibility: visible;
-    opacity: 1;
-}
-/* پنهان کردن تمام پنل‌ها به صورت پیش‌فرض */
-.mtal-pane {
-    display: none;
-}
-/* نمایش فقط پنلی که کلاس active دارد */
-.mtal-pane.active-pane {
-    display: block;
-}
 
 /* MTAL=============================================================================================
 /*                            حذف فضای اضافی پایین آیکن های کتابخانه   
@@ -209,7 +211,160 @@ overflow-x:auto!important;
     border-style: solid;
     border-color: #1e293b transparent transparent transparent;
 }
+/* MTAL=============================================================================================
+/*                                          پریلودر                          
+/* ==============================================================================================CSS*/
+  #alachigh-preloader {
+    position: fixed;
+    inset: 0;
+    background-color: #fbf9f6;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 999999;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+.loader-wrapper {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.loader-ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 28px;
+    border: 3px solid #fbcbb0;
+    border-top-color: #5a6c27;
+    /* اعمال تاخیر ۱ ثانیه‌ای پیش از شروع چرخش */
+    animation: spin 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    animation-delay: 1s; 
+}
+.loader-logo {
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
+    /* اعمال تاخیر ۱ ثانیه‌ای پیش از شروع پالس */
+    animation: pulse 1.8s ease-in-out infinite;
+    animation-delay: 1s;
+}
+.loader-text {
+    margin-top: 18px;
+    font-family: Tahoma, sans-serif;
+    font-size: 13px;
+    color: #5a6c27;
+    letter-spacing: 0.5px;
+}
+.loader-progress-bar {
+    width: 140px;
+    height: 4px;
+    background-color: rgba(90, 108, 39, 0.15);
+    border-radius: 4px;
+    margin-top: 20px;
+    overflow: hidden;
+    position: relative;
+}
+.loader-progress-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    background-color: #5a6c27;
+    /* نوار خطی هم با ۱ ثانیه تاخیر شروع به پر شدن می‌کند */
+    animation: progressAnimation 18s cubic-bezier(0.1, 0.7, 0.1, 1) forwards;
+    animation-delay: .3s;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(0.93); }
+}
+@keyframes progressAnimation {
+    0% { width: 0%; }
+    50% { width: 70%; }
+    100% { width: 95%; }
+}
+#alachigh-preloader.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+/* MTAL=============================================================================================
+/*                                         سواپ کردن فونت                          
+/* =============================================================================================CSS*/
+@font-face {
+    font-family: 'MTALyekanbakh';
+    src: url('fonts/MTALyekanbakh.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap; /* این خط جادویی رو اینجا اضافه کن */
+}
+/* MTAL=============================================================================================
+/*                               تنظیمات پایه کانتینر بازشونده نمایش بیشتر                          
+/* =============================================================================================CSS*/
+/* تنظیمات پایه کانتینر بازشونده */
+.mtal-expandable {
+    --mtal-max-height: 400px;
+    position: relative;
+    overflow: hidden;
+    max-height: var(--mtal-max-height);
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), padding-bottom 0.3s ease;
+    padding-bottom: 70px; /* فضای کافی در حالت باز برای اینکه دکمه روی محتوای آخر نیفتد */
+}
 
+/* ایجاد سایه محو (Fade) در پایین کانتینر */
+.mtal-expandable::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 110px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(243, 246, 236, 1) 80%);
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+/* حذف سایه محو پس از باز شدن کانتینر */
+.mtal-expandable.is-expanded::after {
+    opacity: 0;
+}
+
+/* استایل و جایگذاری دکمه (هم برای حالت نمایش بیشتر و هم نمایش کمتر) */
+.mtal-expandable .mtal-expand-btn {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* تغییر ظاهری اختیاری دکمه وقتی به حالت "نمایش کمتر" می‌رود */
+.mtal-expandable.is-expanded .mtal-expand-btn .elementor-button {
+    opacity: 0.9;
+}
+/* انیمیشن چرخش نرم آیکون فلش داخل دکمه */
+.mtal-expandable .mtal-expand-btn .elementor-button-icon i,
+.mtal-expandable .mtal-expand-btn .elementor-button-icon svg {
+    display: inline-block;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* چرخش ۱۸۰ درجه فلش به سمت بالا در حالت باز (نمایش کمتر) */
+.mtal-expandable.is-expanded .mtal-expand-btn .elementor-button-icon i,
+.mtal-expandable.is-expanded .mtal-expand-btn .elementor-button-icon svg {
+    transform: rotate(180deg);
+}
 
 
 

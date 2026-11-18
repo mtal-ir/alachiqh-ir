@@ -1,46 +1,56 @@
 /* MTAL=============================================================================================
 /*                                                    کارت اطلاعات حرفه‌ای
 /* =============================================================================================CSS*/
-.nschaticon{
-position: fixed;
-bottom: 115px;
-left: 20px;
-z-index: 999;
-cursor: pointer;
+.mtalaticon {
+  position: fixed;
+  bottom: 115px;
+  left: 20px;
+  z-index: 999;
+  cursor: pointer;
+  width: 50px;   /* عرض مناسب برای آیکون */
+  height: 50px;  /* ارتفاع مناسب برای آیکون */
 } 
-.nschatbox{
-position: fixed;
-bottom: 135px;
-left: 40px;
-z-index: 99;
-transform: rotate(180deg) translate(300px , 0);
-height: 0;
-overflow: hidden;
-transition: all 0.3s linear;
-opacity: 0;
-}
-.nschaticon:before{
-content: "";
-width: 100%;
-height: 100%;
-background-image: url('https://a.alachiqh.ir/wp-content/uploads/2026/11/Image-1.svg');  /*-------------------------------------------تغییر لینک*/
-position: absolute;
-background-repeat: no-repeat;
-background-size: contain;
-z-index: 9999;
-background-color: white;
-border-radius: 50%;
-transform: scale(0) rotate(180deg);
-transition: all 0.3s linear;
-}
-.nschaticon.active:before{
-transform: scale(1) rotate(0deg);
+
+.mtalatbox {
+  position: fixed;
+  bottom: 135px;
+  left: 40px;
+  z-index: 99;
+  transform: rotate(180deg) translate(300px , 0);
+  height: 0;
+  overflow: hidden;
+  transition: all 0.3s linear;
+  opacity: 0;
 }
 
-.nschatbox.active{
-transform: rotate(0deg) translate(0px , 0);
-height: 240px;
-opacity: 1;
+
+
+/* لایه ضربدر قرمز رنگ که هنگام فعال شدن روی آیکون می‌آید */
+.mtalaticon:before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-image: url('https://alachiqh.ir/wp-content/uploads/2026/11/Image-1.svg'); /* اگر عکس ضربدر دارید لینک رو اینجا بذارید */
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 9999;
+  background-color: white; /* اگر پس‌زمینه سفید دارد */
+  border-radius: 50%;
+  transform: scale(0) rotate(180deg);
+  transition: all 0.3s linear;
+}
+
+.mtalaticon.active:before {
+  transform: scale(1) rotate(0deg);
+}
+
+.mtalatbox.active {
+  transform: rotate(0deg) translate(0px , 0);
+  height: 240px; /* یا مقدار دلخواه متناسب با ارتفاع محتوا */
+  opacity: 1;
 }
 
 /* MTAL=============================================================================================
@@ -187,6 +197,7 @@ opacity: 1;
 
 /* ۱. استایل و سرعت انیمیشن هدر */
 #headernav {
+	transform: translateY(0); /* حالت پیش‌فرض مطمئن برای زمان لود */
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
 }
 
@@ -276,9 +287,8 @@ top: -40px;
 padding: 5px;
 }
 .elementor-icon.active{
+color: #fe9d02!important;
 
-color: #FE9D02!important;
-border-radius: 50%;
 }
 .mtal-bottom-icon .elementor-icon-box-icon{
 

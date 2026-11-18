@@ -144,17 +144,68 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+// ۵. مدیریت کلیک روی لینک‌های لنگر (#) برای اسکرول نرم و دقیق با در نظر گرفتن ارتفاع هدر
+    const anchorLinks = document.querySelectorAll('a[href^="#"]');
+    anchorLinks.forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const targetId = this.getAttribute('href');
+            
+            // اگر لینک فقط یک '#' خالی بود، کاری نکنیم
+            if (targetId === '#') return;
+
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                e.preventDefault(); // جلوگیری از رفتار پیش‌فرض پرش ناگهانی
+
+                // محاسبه ارتفاع هدر برای اینکه المان زیر هدر پنهان نشود
+                const headerNav = document.getElementById('headernav');
+                const headerHeight = headerNav ? headerNav.offsetHeight : 0;
+                
+                // فاصله المان تا بالای صفحه منهای ارتفاع هدر (و کمی فضای خالی اضافی)
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerHeight - 20;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
 // MTAL=============================================================================================
 //                                            کارت مشخصات حرفه‌ای
 // ===============================================================================================JS
-/**********javascript code**********/
-const nschaticon = document.querySelector(".nschaticon");
-const nschatbox = document.querySelector(".nschatbox");
+const mtalaticon = document.querySelector(".mtalaticon");
+const mtalatbox = document.querySelector(".mtalatbox");
 
-nschaticon.addEventListener("click" , function(){
-nschaticon.classList.toggle("active");
-nschatbox.classList.toggle("active");
+// تابع مشترک برای بستن چت‌باکس
+function closeChatbox() {
+    if (mtalatbox.classList.contains("active")) {
+        mtalaticon.classList.remove("active");
+        mtalatbox.classList.remove("active");
+    }
+}
 
+// باز و بسته کردن با کلیک روی آیکون
+mtalaticon.addEventListener("click", function(event) {
+    event.stopPropagation(); // جلوگیری از بسته شدن فوری توسط سند
+    mtalaticon.classList.toggle("active");
+    mtalatbox.classList.toggle("active");
+});
+
+// جلوگیری از بسته شدن چت‌باکس وقتی کاربر روی خود گزینه‌های داخل آن کلیک می‌کند
+mtalatbox.addEventListener("click", function(event) {
+    event.stopPropagation();
+});
+
+// بسته شدن کانتینر با کلیک در هر جای دیگر صفحه
+document.addEventListener("click", function() {
+    closeChatbox();
+});
+
+// بسته شدن چت‌باکس به محض اسکرول کردن صفحه (بالا یا پایین)
+window.addEventListener("scroll", function() {
+    closeChatbox();
 });
 
 // JS===============================================================================================
