@@ -12,14 +12,7 @@ add_action('wp_footer', function() {
 /*                                          پریلودر                          
 /* =============================================================================================PHP*/
 
-// ۱. بارگذاری پیش‌دستانه (Preload) تصویر هیروسکشن
-add_action( 'wp_head', function() {
-    if ( is_front_page() ) {
-        echo '<link rel="preload" as="image" href="https://alachiqh.ir/wp-content/uploads/2026/11/home-page-scaled-1.webp" fetchpriority="high">';
-    }
-});
-
-// ۲. تزریق ساختار HTML پریلودر در ابتدای بدنه سایت
+// ۱. تزریق ساختار HTML پریلودر در ابتدای بدنه سایت
 add_action( 'wp_body_open', function() {
     ?>
     <div id="alachigh-preloader">
@@ -36,7 +29,7 @@ add_action( 'wp_body_open', function() {
     <?php
 });
 
-// ۳. فراخوانی فایل‌های CSS و JS جداگانه مربوط به پریلودر
+// ۲. فراخوانی صحیح فایل‌های CSS و JS جداگانه مربوط به پریلودر
 add_action( 'wp_enqueue_scripts', function() {
     $dir_uri = get_stylesheet_directory_uri() . '/MT001-entire-site/';
 

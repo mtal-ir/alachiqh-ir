@@ -1,0 +1,16 @@
+/* CSS==============================================================================================
+/*                            هیرو سکشن - تنظیمات پایه                             
+/* =============================================================================================MTAL*/
+.mtal-home-about {
+  background-image: url('https://alachiqh.ir/wp-content/uploads/2026/11/abut-alachiqh-final-1.webp');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  will-change: transform;
+}
+/*حالت اسکرول موبایل*/
+@media (max-width:767px){
+.mtal-suites-iconbox-counter{
+    overflow-x: scroll!important;
+    text-wrap: nowrap!important;
+}}

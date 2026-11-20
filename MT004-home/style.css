@@ -135,12 +135,24 @@ transition:0.3s linear !important;
     animation: subtle-pulse 3s infinite ease-in-out;
     transition: transform 0.3s ease;
 }
-/*هیرو سکشن */
+
+/* CSS==============================================================================================
+/*                            هیرو سکشن - تنظیمات پایه                             
+/* =============================================================================================MTAL*/
+
 .hero-section-class {
-  background-image: url('https://alachiqh.ir/wp-content/uploads/2026/11/hero-section-home.webp');
+  background-image: url('https://alachiqh.ir/wp-content/uploads/2026/11/hero-section-home-dark-1.webp');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  will-change: transform; /* بهینه‌سازی رندرینگ مرورگر */
+  will-change: transform;
+}
+
+.mtal-home-about {
+  background-image: url('https://alachiqh.ir/wp-content/uploads/2026/11/abut-alachiqh-final-1.webp');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  will-change: transform;
 }
 

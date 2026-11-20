@@ -76,8 +76,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
-
-
 /* MTAL=============================================================================================
 /*                                      تول تیپ حرفه ای 
 /* ==============================================================================================JS*/
@@ -186,98 +184,147 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 })();
-/* MTAL=============================================================================================
-/*                                          پریلودر                          
-/* ==============================================================================================JS*/
-document.addEventListener("DOMContentLoaded", function () {
-    const preloader = document.getElementById('alachigh-preloader');
-    
-    function hidePreloader() {
-        if (preloader && !preloader.classList.contains('fade-out')) {
-            preloader.classList.add('fade-out');
-            setTimeout(() => {
-                preloader.remove();
-            }, 500); // همگام با انیمیشن CSS
-        }
-    }
 
-    // ۱. محو شدن پریلودر به محض لود کامل صفحه
-    window.addEventListener('load', hidePreloader);
-
-    // ۲. ظاهر شدن آنی پریلودر به محض کلیک روی لینک‌های داخلی (برای سرعت انتقال بین صفحات)
-    document.addEventListener('click', function (e) {
-        const link = e.target.closest('a');
-        if (
-            link && 
-            link.href && 
-            link.hostname === window.location.hostname && 
-            !link.getAttribute('target') && 
-            !link.getAttribute('download') &&
-            link.getAttribute('href') !== '#' &&
-            !link.getAttribute('href').startsWith('#')
-        ) {
-            // اگر پریلودر قبلاً حذف شده بود، موقع کلیک روی لینک جدید دوباره ایجادش کن تا کاربر منتظر نماند
-            if (!document.getElementById('alachigh-preloader') && preloader) {
-                document.body.prepend(preloader);
-            }
-            if (preloader) {
-                preloader.classList.remove('fade-out');
-            }
-        }
-    });
-
-    // ۳. تایمر ایمنی ۲۰ ثانیه‌ای (جلوگیری از گیر کردن کاربر روی لودر)
-    setTimeout(hidePreloader, 20000);
-});
-
-// ۴. رفع مشکل دکمه Back/Forward مرورگر (bfcache)
-window.addEventListener('pageshow', function (event) {
-    if (event.persisted) {
-        const preloader = document.getElementById('alachigh-preloader');
-        if (preloader) preloader.remove();
-    }
-});
 /* MTAL=============================================================================================
 /*                               تنظیمات پایه کانتینر بازشونده نمایش بیشتر                          
 /* ==============================================================================================JS*/
 document.addEventListener('DOMContentLoaded', function () {
     const expandableContainers = document.querySelectorAll('.mtal-expandable');
+    const floatingBtn = document.querySelector('.mtal-floating-collapse');
 
     expandableContainers.forEach(container => {
         const btn = container.querySelector('.mtal-expand-btn');
         if (!btn) return;
 
-        // پیدا کردن تگ متن داخلی دکمه در المنتور
         const btnText = btn.querySelector('.elementor-button-text') || btn;
         const moreText = btnText.textContent.trim() || 'نمایش بیشتر';
         const lessText = 'نمایش کمتر';
 
-        // خواندن ارتفاع اولیه تعریف شده در CSS
         const getInitialHeight = () => {
             return getComputedStyle(container).getPropertyValue('--mtal-max-height').trim() || '400px';
         };
 
+        // تابع بستن مشترک برای دکمه اصلی و فلش شناور
+        const collapseContainer = () => {
+            container.style.maxHeight = getInitialHeight();
+            container.classList.remove('is-expanded');
+            btnText.textContent = moreText;
+            if (floatingBtn) floatingBtn.classList.remove('is-visible');
+
+            // اسکرول نرم به بالای کانتینر
+            const rect = container.getBoundingClientRect();
+            if (rect.top < 0) {
+                container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        };
+
+        // مدیریت نمایش فلش شناور هنگام اسکرول
+        window.addEventListener('scroll', function () {
+            if (!container.classList.contains('is-expanded') || !floatingBtn) return;
+            
+            const rect = container.getBoundingClientRect();
+            // اگر کاربر از ابتدای کانتینر رد شده و هنوز به انتهای آن نرسیده است
+            if (rect.top < -300 && rect.bottom > 300) {
+                floatingBtn.classList.add('is-visible');
+            } else {
+                floatingBtn.classList.remove('is-visible');
+            }
+        });
+
+        // کلیک روی دکمه اصلی المنتور
         btn.addEventListener('click', function (e) {
             e.preventDefault();
             const isExpanded = container.classList.contains('is-expanded');
 
             if (isExpanded) {
-                // حالت بستن (نمایش کمتر)
-                container.style.maxHeight = getInitialHeight();
-                container.classList.remove('is-expanded');
-                btnText.textContent = moreText;
-
-                // اسکرول نرم به بالای کانتینر اگر کاربر خیلی پایین رفته باشد
-                const rect = container.getBoundingClientRect();
-                if (rect.top < 0) {
-                    container.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
+                collapseContainer();
             } else {
-                // حالت باز کردن (نمایش بیشتر)
-                container.style.maxHeight = container.scrollHeight + 'px';
+                container.style.maxHeight = '2500px';
                 container.classList.add('is-expanded');
                 btnText.textContent = lessText;
             }
         });
+
+        // کلیک روی فلش شناور کنار صفحه
+        if (floatingBtn) {
+            floatingBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                collapseContainer();
+            });
+        }
+    });
+});
+/* MTAL=============================================================================================
+/*                               کانتینر نوار روان                         
+/* ==============================================================================================JS*/
+document.addEventListener('DOMContentLoaded', () => {
+    const initMtalMarquees = () => {
+        const marquees = document.querySelectorAll('.mtal-marquee');
+
+        marquees.forEach((marquee) => {
+            const track = marquee.querySelector('.mtal-marquee-track');
+            if (!track) return;
+
+            // در صورت اجرای مجدد، ابتدا کلون‌های قبلی را حذف می‌کنیم تا آیتم‌های اصلی تمیز بمانند
+            track.querySelectorAll('[data-mtal-clone="1"]').forEach((el) => el.remove());
+
+            const baseItems = Array.from(track.children);
+            const containerWidth = marquee.getBoundingClientRect().width;
+
+            if (baseItems.length === 0 || containerWidth === 0) return;
+
+            const singleSetWidth = track.scrollWidth;
+            const gap = parseFloat(getComputedStyle(track).gap) || 0;
+
+            const setsPerHalf = Math.max(
+                1,
+                Math.ceil((containerWidth + 120) / Math.max(singleSetWidth, 1))
+            );
+
+            const fragment = document.createDocumentFragment();
+
+            for (let half = 0; half < 2; half++) {
+                for (let s = 0; s < setsPerHalf; s++) {
+                    baseItems.forEach((item) => {
+                        if (half === 0 && s === 0) return;
+
+                        const clone = item.cloneNode(true);
+                        clone.setAttribute('data-mtal-clone', '1');
+                        clone.setAttribute('aria-hidden', 'true');
+                        fragment.appendChild(clone);
+                    });
+                }
+            }
+
+            track.appendChild(fragment);
+
+            const totalItemsInOneHalf = baseItems.length * setsPerHalf;
+            const allChildren = Array.from(track.children);
+
+            const firstItem = allChildren[0];
+            const firstItemOfSecondHalf = allChildren[totalItemsInOneHalf];
+
+            let shiftPx = setsPerHalf * (singleSetWidth + gap);
+
+            if (firstItem && firstItemOfSecondHalf) {
+                const r1 = firstItem.getBoundingClientRect();
+                const r2 = firstItemOfSecondHalf.getBoundingClientRect();
+                shiftPx = Math.abs(r2.left - r1.left);
+            }
+
+            track.style.setProperty('--mtal-shift', `${shiftPx}px`);
+
+            track.style.animation = 'none';
+            track.offsetHeight;
+            track.style.animation = '';
+        });
+    };
+
+    window.addEventListener('load', initMtalMarquees);
+
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(initMtalMarquees, 200);
     });
 });
